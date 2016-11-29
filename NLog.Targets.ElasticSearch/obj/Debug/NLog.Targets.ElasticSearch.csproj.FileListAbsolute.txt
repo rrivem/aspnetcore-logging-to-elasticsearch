@@ -1,0 +1,1 @@
+C:\dev\pocs\NLog.Targets.ElasticSearch\src\NLog.Targets.ElasticSearch\obj\Debug\NLog.Targets.ElasticSearch.csprojResolveAssemblyReference.cache

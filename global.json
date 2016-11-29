@@ -1,0 +1,6 @@
+{
+    "projects": [
+        "nlog-es",
+        "NLog.Targets.ElasticSearch"
+    ]
+}
