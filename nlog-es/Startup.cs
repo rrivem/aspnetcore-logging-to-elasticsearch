@@ -44,6 +44,9 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<BlogContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("MySql")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
