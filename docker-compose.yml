@@ -1,6 +1,17 @@
 version: '2'
 
 services:
+  mysql:
+    restart: always
+    build: mysql/
+    volumes:
+      - ./mysql/data:/var/lib/mysql/
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "my-secret-pw"
+    networks:
+      - nlog-poc
   elasticsearch:
     restart: always
     build: elasticsearch/
@@ -19,6 +30,7 @@ services:
     networks:
       - nlog-poc
     depends_on:
+      - mysql
       - elasticsearch
   kibana:
     restart: always
