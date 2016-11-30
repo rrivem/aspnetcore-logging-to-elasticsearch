@@ -60,9 +60,12 @@ namespace WebApplication
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
             loggerFactory.AddNLog();
 
-            var configDir = @"C:\dev\pocs\nlog\Logs";
+            var configDir = "Logs";
             if (configDir != string.Empty)
             {
                 var logEventInfo = NLog.LogEventInfo.CreateNullEvent();

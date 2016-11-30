@@ -12,4 +12,6 @@ EXPOSE 5000/tcp
 
 WORKDIR /app/nlog-es
 
+RUN ["dotnet", "build"]
+
 ENTRYPOINT ["dotnet", "run", "--server.urls", "http://0.0.0.0:5000"]
