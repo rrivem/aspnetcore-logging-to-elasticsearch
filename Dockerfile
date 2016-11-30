@@ -14,4 +14,4 @@ WORKDIR /app/nlog-es
 
 RUN ["dotnet", "build"]
 
-ENTRYPOINT ["dotnet", "run", "--server.urls", "http://0.0.0.0:5000"]
+ENTRYPOINT ["dotnet", "run", "--server.urls", "http://*:5000"]
