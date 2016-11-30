@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
+using NLog.Config;
 using NLog.Extensions.Logging;
 using NLog.Targets;
 using WebApplication.Data;
@@ -62,6 +63,8 @@ namespace WebApplication
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            LogManager.Configuration = new XmlLoggingConfiguration("nlog.config");
 
             loggerFactory.AddNLog();
 
