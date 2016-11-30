@@ -2,6 +2,7 @@ version: '2'
 
 services:
   elasticsearch:
+    restart: always
     build: elasticsearch/
     ports:
       - "9200:9200"
@@ -9,26 +10,28 @@ services:
     environment:
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
     networks:
-      - docker_elk
+      - nlog-poc
   nlog-es:
+    restart: always
     build: .
     ports:
       - "5000:5000"
     networks:
-      - docker_elk
+      - nlog-poc
     depends_on:
       - elasticsearch
   kibana:
+    restart: always
     build: kibana/
     volumes:
       - ./kibana/config/:/opt/kibana/config/
     ports:
       - "5601:5601"
     networks:
-      - docker_elk
+      - nlog-poc
     depends_on:
       - elasticsearch
 
 networks:
-  docker_elk:
+  nlog-poc:
     driver: bridge
